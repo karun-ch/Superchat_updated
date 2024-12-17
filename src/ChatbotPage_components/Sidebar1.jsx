@@ -10,15 +10,15 @@ import { RiDeleteBin6Line,
 import {
   FaArrowLeft,
   FaArrowRight,
-  FaCog,
-  FaMoon,
-  FaSun,
-  FaTrashAlt,
-  FaBell, } from "react-icons/fa";
+} from "react-icons/fa";
 import superchatLogo from "../assets/superchat_logo.png";
 import { changesidebarwidth, changetodarkmode } from "../ReduxStateManagement/user";
 import { clear_chat_api } from "../Utils/Apis";
 import superchatLogo_white from "../assets/superchat_logo_white.png"
+
+
+
+
 
 
 const Sidebar = () => {
@@ -64,7 +64,7 @@ const handleclearconversations=async()=>{
   }
 }
   return (
-<div
+    <div
       className={`  ${ 
         darkmode ? "bg-[#3A3B3C] text-white" : "bg-gray-100 text-gray-900"
       } h-screen flex flex-col  ${
@@ -97,8 +97,8 @@ const handleclearconversations=async()=>{
     </p>
   )}
 
-      {/* Expand/Collapse Button */}
-      <div className="relative group ml-4">
+  {/* Expand/Collapse Button */}
+  <div className="relative group ml-4">
   <div
     onClick={toggleSidebar}
     className={`flex items-center justify-center w-6 h-6 p-1 rounded-full cursor-pointer ${
@@ -108,54 +108,29 @@ const handleclearconversations=async()=>{
   >
     {sidebarReduced ? <FaArrowRight /> : <FaArrowLeft />}
   </div>
-  </div>
-      {/* <div className="flex items-center justify-center p-4">
-        <div className="flex items-center justify-between w-full">
-          {!sidebarReduced && (
-            <p className={`text-xl font-bold bg-gradient-to-r ${darkmode ? " from-[#F5EEF8] to-[#D0D3D4]" : " from-[#6F036C] to-[#FF6F61E5]"} bg-clip-text text-transparent`}>
-              Superchat LLC
-            </p>
-          )}
-          <div className="relative group ml-auto">
-            <div
-              onClick={toggleSidebar}
-              className={`p-2 rounded-full cursor-pointer ${
-                darkmode ? "bg-gray-100 text-black" : "bg-gray-800 text-white"
-              }`}
-            >
-              {sidebarReduced ? <FaArrowRight /> : <FaArrowLeft />}
-            </div>
-            <div
-              className={`${tooltipClass} ${
-                sidebarReduced ? "left-" : "right-"
-              }`}
-            >
-              {sidebarReduced ? "Expand " : "Collapse "}
-            </div>
-          </div>
-        </div> */}
-      </div>
 
+
+    {/* Tooltip for Expand/Collapse */}
+  {/* <div
+    className={`${tooltipClass} absolute top-1/2 transform -translate-y-1/2 ${
+      sidebarReduced ? "left-4" : "right-10"
+    } z-50`}
+  >
+    {sidebarReduced ? "Expand" : "Collapse"}
+  </div> */}
+  </div>
+</div>
+      
       {/* Menu Items */}
       <div className="flex flex-col items-start px-0 py-0 mt-auto mb-1 text-black-900 text-sm">
         {/* Settings */}
-        <div className="h-10 relative group mb-0 text-black w-full">
+        
+        <div className="h-10 relative text-sm group mb-0 text-black  w-full">
           <div className={menuItemClass(sidebarReduced)}>
           <IoSettingsOutline  className={`text-lg flex gap-2 items-center justify-center cursor-pointer  ${
-              darkmode ? "text-white " : "text-black"
-            }`} 
-            style={{
-              color: darkmode ? "#FFFFFF" : "#000000",
-              filter: darkmode ? "none" : "brightness(0.9)",
-            }}
-            />
-            {!sidebarReduced && (
-      <span className={`${darkmode ? "text-white" : "text-black"}`}
-      style={{
-        color: darkmode ? "#FFFFFF" : "#000000",
-        filter: darkmode ? "none" : "brightness(0.9)",
-      }}
-      > Settings </span> )}
+              darkmode ? "text-white " : "text-black "
+            }`} />
+            {!sidebarReduced && <span className={`${darkmode ? "text-white" : "text-black"}`} >Settings</span>}
           </div>
           {sidebarReduced && <div className={tooltipClass}>Settings</div>}
         </div>
@@ -176,8 +151,8 @@ const handleclearconversations=async()=>{
             
             }} className={menuItemClass(sidebarReduced)}>
             {darkmode ? <FaSun  className={`text-lg flex gap-2 items-center justify-center cursor-pointer  ${
-              darkmode ? "text-white " : "text-gray"
-            }`}/> : <MdOutlineDarkMode className="text-black text-lg"/>}
+              darkmode ? "text-white " : "text-gray-600 "
+            }`}/> : <MdOutlineDarkMode className="text-lg " />}
             {!sidebarReduced && <span className={`${darkmode ? "text-white" : "text-black"}`} >{darkmode ? "Light Theme" : "Dark Theme"}</span>}
           </div>
           {sidebarReduced && (
@@ -191,13 +166,13 @@ const handleclearconversations=async()=>{
           <div className={menuItemClass(sidebarReduced)}>
           <RiDeleteBin6Line 
             className={`text-lg flex gap-2 items-center justify-center cursor-pointer  ${
-              darkmode ? "text-white " : "text-black "
+              darkmode ? "text-white " : "text-black-600 "
             }`}
               onClick={handleclearconversations}
             />
-            {!sidebarReduced && <span
-            className= {darkmode ? "text-white" : "text-black"}
-            onClick={handleclearconversations}
+            {!sidebarReduced && <span 
+            className=" hover:text-gray-950 "
+              onClick={handleclearconversations}
 
             >Clear Conversations</span>}
           </div>
@@ -211,9 +186,9 @@ const handleclearconversations=async()=>{
         <div className="h-10 relative group mb-2 w-full">
           <div className={menuItemClass(sidebarReduced)}> 
           <RiShareBoxLine  className={`text-lg flex gap-2 items-center justify-center cursor-pointer  ${
-                darkmode ? "text-white " : "text-black"
+                darkmode ? "text-white " : "text-black-600 "
               }`} />
-            {!sidebarReduced && <span className={`${darkmode ? "text-white" : "text-black"}`} >Updates & FAQ</span>}
+            {!sidebarReduced && <span>Updates & FAQ</span>}
           </div>
           {sidebarReduced && <div className={tooltipClass}>Updates & FAQ</div>}
         </div>
@@ -229,7 +204,7 @@ const handleclearconversations=async()=>{
                 navigate("/signup");
               }}
                 className={`text-lg cursor-pointer ml-8  ${
-                  darkmode ? "text-white group-hover:text-red-800" : "text-black-600 group-hover:text-red-700"
+                  darkmode ? "text-white hover:text-red-800" : "text-black-600 hover:text-red-700"
                 }`}
               />
               <div className={tooltipClass}>Logout</div>
@@ -245,8 +220,8 @@ const handleclearconversations=async()=>{
               className={`text-sm flex gap-2 items-center justify-center cursor-pointer ml-3.5 ${
                 darkmode ? "text-white hover:text-red-800" : "text-gray-600 hover:text-red-700"
               }`}            >
-              <MdLogout className={` text-lg ${darkmode ? "text-white group-hover:text-red-800" : "text-black group-hover:text-red-700"}`} />
-              <span className={`${darkmode ? "text-white group-hover:text-red-800" : "text-black group-hover:text-red-700"}`} > Log out </span>
+              <MdLogout className="text-lg text-black-900" />
+              Log out
             </button>
           )}
         </div>

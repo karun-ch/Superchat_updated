@@ -13,7 +13,7 @@ const Chatbot_Message = ({ content, type = "text", isLoading }) => {
         iconColor: "bg-[#3A3A3A]", // Dark gray for bot icon background
       }
     : {
-      userMessage: "bg-gray-500 text-gray-200", // Blue for user messages
+      userMessage: "bg-black text-gray-100", // Blue for user messages
       botMessage: "bg-gray-100 text-gray-800", // Light gray for bot messages
         systemMessage: "bg-gray-200 text-gray-600", // Lighter gray for system messages
         iconColor: "bg-gray-200", // Light gray for bot icon background
@@ -48,7 +48,11 @@ const Chatbot_Message = ({ content, type = "text", isLoading }) => {
 
       {/* Message content */}
       <div
-        className={`rounded-lg p-3 max-w-[75%] ${
+        className={`p-3 max-w-[75%] rounded-bl-lg rounded-br-lg ${
+          type === "bot"
+            ? "rounded-tl-none rounded-tr-lg" // Bot message: sharp top-left, rounded top-right
+            : "rounded-tl-lg rounded-tr-none" // Other messages: rounded top-left, sharp top-right
+        } ${
           type === "system"
             ? messageStyles.systemMessage
             : type === "bot"
